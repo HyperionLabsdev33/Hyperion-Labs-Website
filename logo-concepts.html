@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hyperion Labs — Logo Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --yellow:  #FFD000;
+    --white:   #F0EDE8;
+    --cyan:    #00D4FF;
+    --dark:    #08080d;
+    --card:    #0e0e16;
+    --border:  #18182a;
+  }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    padding: 64px 24px 96px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .masthead {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+  .masthead span {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #333350;
+    margin-bottom: 12px;
+  }
+  .masthead h1 {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: #555568;
+  }
+
+  /* ─── CONCEPT CARDS ─────────────────────────────────── */
+
+  .concepts {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .concept {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 220px;
+  }
+  @media (max-width: 680px) {
+    .concept { grid-template-columns: 1fr; }
+  }
+
+  /* Left cell — mark preview */
+  .mark-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 44px 32px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .mark-cell::before {
+    /* subtle grid dot bg */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, #18182a 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .mark-dark,
+  .mark-light {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .mark-light {
+    background: #F2F0EB;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .marks-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .swatch-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2a2a40;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* Right cell — info + lockup */
+  .info-cell {
+    padding: 36px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+  }
+
+  .concept-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .concept-index {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2a2a40;
+  }
+  .concept-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+  .concept-desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: #44445a;
+    line-height: 1.7;
+    max-width: 340px;
+    margin-top: 4px;
+  }
+
+  /* Horizontal lockup */
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px 28px;
+    background: #0a0a12;
+    border: 1px solid #14142a;
+    border-radius: 6px;
+    align-self: flex-start;
+  }
+  .lockup-sep {
+    width: 1px;
+    height: 38px;
+    background: #20203a;
+    flex-shrink: 0;
+  }
+  .lockup-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .lk-main {
+    line-height: 1;
+    display: block;
+  }
+  .lk-sub {
+    line-height: 1;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <span>Brand Identity Review</span>
+  <h1>Hyperion Labs &mdash; 5 Concepts</h1>
+</div>
+
+<div class="concepts">
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 01 · HELIOS                                                    -->
+  <!-- Inspired by: the Helios moon base viewed from above.          -->
+  <!-- An H inscribed inside a perfect circle — the ring of the      -->
+  <!-- station, the H as its internal structure. One colour.         -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="concept">
+    <div class="mark-cell">
+      <div class="marks-row">
+        <div>
+          <div class="mark-dark">
+            <svg width="108" height="108" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <!-- Dark-filled circle + yellow border -->
+              <circle cx="40" cy="40" r="37" fill="#0c0b07" stroke="#FFD000" stroke-width="2.5"/>
+              <!-- H letterform inside -->
+              <rect x="15" y="12" width="13" height="56" fill="#FFD000"/>
+              <rect x="52" y="12" width="13" height="56" fill="#FFD000"/>
+              <rect x="15" y="33" width="50" height="12" fill="#FFD000"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Dark</div>
+        </div>
+        <div>
+          <div class="mark-light">
+            <svg width="72" height="72" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="37" fill="#E8E5DC" stroke="#B89000" stroke-width="2.5"/>
+              <rect x="15" y="12" width="13" height="56" fill="#9A6A00"/>
+              <rect x="52" y="12" width="13" height="56" fill="#9A6A00"/>
+              <rect x="15" y="33" width="50" height="12" fill="#9A6A00"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Light</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cell">
+      <div class="concept-meta">
+        <span class="concept-index">01 / 05</span>
+        <span class="concept-name" style="color:#FFD000;">HELIOS</span>
+        <p class="concept-desc">The H inscribed within a circular frame — a direct reference to the Helios moon base ring. The circle reads as an orbital structure; the H is its core. One colour, infinite scale. Think NASA mission patch meets Hyperion corporation.</p>
+      </div>
+      <div class="lockup">
+        <svg width="40" height="40" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="37" fill="#0c0b07" stroke="#FFD000" stroke-width="2.5"/>
+          <rect x="15" y="12" width="13" height="56" fill="#FFD000"/>
+          <rect x="52" y="12" width="13" height="56" fill="#FFD000"/>
+          <rect x="15" y="33" width="50" height="12" fill="#FFD000"/>
+        </svg>
+        <div class="lockup-sep"></div>
+        <div class="lockup-text">
+          <span class="lk-main" style="font-family:'Inter',sans-serif;font-weight:700;font-size:18px;letter-spacing:0.2em;color:#F0EDE8;">HYPERION</span>
+          <span class="lk-sub" style="font-family:'Inter',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.75em;color:#FFD000;">LABS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 02 · MARK                                                      -->
+  <!-- Inspired by: the actual Hyperion in-game corporate H mark.    -->
+  <!-- Redrawn with designer proportions — thick pillars, wide gap,  -->
+  <!-- crossbar positioned at the optical centre (not geometric).    -->
+  <!-- No decoration. Just the H. Flat yellow. Scales to 12px.       -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="concept">
+    <div class="mark-cell">
+      <div class="marks-row">
+        <div>
+          <div class="mark-dark">
+            <svg width="96" height="108" viewBox="0 0 56 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0"  y="0" width="16" height="64" fill="#FFD000"/>
+              <rect x="40" y="0" width="16" height="64" fill="#FFD000"/>
+              <rect x="0"  y="25" width="56" height="12" fill="#FFD000"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Dark</div>
+        </div>
+        <div>
+          <div class="mark-light">
+            <svg width="72" height="82" viewBox="0 0 56 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0"  y="0" width="16" height="64" fill="#9A6A00"/>
+              <rect x="40" y="0" width="16" height="64" fill="#9A6A00"/>
+              <rect x="0"  y="25" width="56" height="12" fill="#9A6A00"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Light</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cell">
+      <div class="concept-meta">
+        <span class="concept-index">02 / 05</span>
+        <span class="concept-name" style="color:#FFD000;">MARK</span>
+        <p class="concept-desc">The Hyperion H — redrawn properly. Thick pillars (16px each), tight gap (8px), crossbar at the optical centre. Nothing added, nothing removed. The kind of mark that looks like it was always there. Flat yellow, zero decoration. This is how IBM, FedEx, and Nike do it.</p>
+      </div>
+      <div class="lockup">
+        <svg width="40" height="46" viewBox="0 0 56 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0"  y="0" width="16" height="64" fill="#FFD000"/>
+          <rect x="40" y="0" width="16" height="64" fill="#FFD000"/>
+          <rect x="0"  y="25" width="56" height="12" fill="#FFD000"/>
+        </svg>
+        <div class="lockup-sep"></div>
+        <div class="lockup-text">
+          <span class="lk-main" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;letter-spacing:0.12em;color:#FFD000;">HYPERION</span>
+          <span class="lk-sub" style="font-family:'Inter',sans-serif;font-weight:500;font-size:10px;letter-spacing:0.65em;color:#887700;">LABS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 03 · ARC                                                       -->
+  <!-- Inspired by: orbital trajectory, satellite paths above        -->
+  <!-- the Helios station. The H stands as a structure; a single     -->
+  <!-- arc sweeps from pillar to pillar above it, suggesting the     -->
+  <!-- station's ring or a rising orbital path. White + yellow.      -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="concept">
+    <div class="mark-cell">
+      <div class="marks-row">
+        <div>
+          <div class="mark-dark">
+            <svg width="96" height="118" viewBox="0 0 60 78" xmlns="http://www.w3.org/2000/svg">
+              <!-- Arc above the H -->
+              <path d="M 6,32 Q 30,4 54,32"
+                    fill="none" stroke="#FFD000" stroke-width="3.5"
+                    stroke-linecap="round"/>
+              <!-- Small circle dots where arc meets pillars -->
+              <circle cx="6"  cy="32" r="3" fill="#FFD000"/>
+              <circle cx="54" cy="32" r="3" fill="#FFD000"/>
+              <!-- H pillars (start below arc endpoints) -->
+              <rect x="0"  y="32" width="12" height="46" fill="#F0EDE8"/>
+              <rect x="48" y="32" width="12" height="46" fill="#F0EDE8"/>
+              <!-- Crossbar -->
+              <rect x="0"  y="52" width="60" height="9" fill="#F0EDE8"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Dark</div>
+        </div>
+        <div>
+          <div class="mark-light">
+            <svg width="72" height="90" viewBox="0 0 60 78" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 6,32 Q 30,4 54,32"
+                    fill="none" stroke="#9A6A00" stroke-width="3.5"
+                    stroke-linecap="round"/>
+              <circle cx="6"  cy="32" r="3" fill="#9A6A00"/>
+              <circle cx="54" cy="32" r="3" fill="#9A6A00"/>
+              <rect x="0"  y="32" width="12" height="46" fill="#1a1a2e"/>
+              <rect x="48" y="32" width="12" height="46" fill="#1a1a2e"/>
+              <rect x="0"  y="52" width="60" height="9" fill="#1a1a2e"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Light</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cell">
+      <div class="concept-meta">
+        <span class="concept-index">03 / 05</span>
+        <span class="concept-name" style="color:#F0EDE8;">ARC</span>
+        <p class="concept-desc">An orbital arc sweeps from the top of the left pillar to the top of the right, like a satellite path above the Helios station. The arc is yellow, the H below it is white. Two elements, two weights, one mark. Feels like aerospace, communications, reach.</p>
+      </div>
+      <div class="lockup">
+        <svg width="46" height="58" viewBox="0 0 60 78" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 6,32 Q 30,4 54,32" fill="none" stroke="#FFD000" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="6"  cy="32" r="3" fill="#FFD000"/>
+          <circle cx="54" cy="32" r="3" fill="#FFD000"/>
+          <rect x="0"  y="32" width="12" height="46" fill="#F0EDE8"/>
+          <rect x="48" y="32" width="12" height="46" fill="#F0EDE8"/>
+          <rect x="0"  y="52" width="60" height="9" fill="#F0EDE8"/>
+        </svg>
+        <div class="lockup-sep"></div>
+        <div class="lockup-text">
+          <span class="lk-main" style="font-family:'Inter',sans-serif;font-weight:300;font-size:18px;letter-spacing:0.28em;color:#F0EDE8;">HYPERION</span>
+          <span class="lk-sub" style="font-family:'Inter',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.35em;color:#FFD000;">LABS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 04 · AXIS                                                      -->
+  <!-- Inspired by: the aggressive diagonal slashes in Hyperion's    -->
+  <!-- in-game UI and weapon branding. The H has a diagonal          -->
+  <!-- crossbar — not horizontal. The slash suggests speed,          -->
+  <!-- disruption, forward momentum. Unexpected but readable.        -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="concept">
+    <div class="mark-cell">
+      <div class="marks-row">
+        <div>
+          <div class="mark-dark">
+            <svg width="90" height="108" viewBox="0 0 58 70" xmlns="http://www.w3.org/2000/svg">
+              <!-- Left pillar -->
+              <rect x="0" y="0" width="14" height="70" fill="#FFD000"/>
+              <!-- Right pillar -->
+              <rect x="44" y="0" width="14" height="70" fill="#FFD000"/>
+              <!-- Diagonal crossbar — parallelogram rising left to right -->
+              <path d="M0,44 L58,18 L58,30 L0,56 Z" fill="#FFD000"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Dark</div>
+        </div>
+        <div>
+          <div class="mark-light">
+            <svg width="68" height="82" viewBox="0 0 58 70" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0" width="14" height="70" fill="#9A6A00"/>
+              <rect x="44" y="0" width="14" height="70" fill="#9A6A00"/>
+              <path d="M0,44 L58,18 L58,30 L0,56 Z" fill="#9A6A00"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Light</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cell">
+      <div class="concept-meta">
+        <span class="concept-index">04 / 05</span>
+        <span class="concept-name" style="color:#FFD000;">AXIS</span>
+        <p class="concept-desc">The H crossbar runs at a 23° diagonal instead of horizontal. The two pillars stay perfectly vertical — the tension between them creates energy. Reads immediately as H, but the slash crossbar makes it feel aggressive and forward-moving. Borrowed from Hyperion's weapon and UI branding language.</p>
+      </div>
+      <div class="lockup">
+        <svg width="40" height="48" viewBox="0 0 58 70" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="14" height="70" fill="#FFD000"/>
+          <rect x="44" y="0" width="14" height="70" fill="#FFD000"/>
+          <path d="M0,44 L58,18 L58,30 L0,56 Z" fill="#FFD000"/>
+        </svg>
+        <div class="lockup-sep"></div>
+        <div class="lockup-text">
+          <span class="lk-main" style="font-family:'Inter',sans-serif;font-weight:900;font-size:19px;letter-spacing:0.1em;color:#FFD000;">HYPERION</span>
+          <span class="lk-sub" style="font-family:'Inter',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.65em;color:#F0EDE8;opacity:0.5;">LABS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- 05 · MONO                                                      -->
+  <!-- Inspired by: the corporate austerity of Hyperion as an evil   -->
+  <!-- megacorp — the kind of logo that doesn't need to try hard     -->
+  <!-- because the company is that powerful. White H, single thin    -->
+  <!-- horizontal rule as crossbar, nothing else. Maximum tension    -->
+  <!-- between the heavy pillars and the knife-thin crossbar.        -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="concept">
+    <div class="mark-cell">
+      <div class="marks-row">
+        <div>
+          <div class="mark-dark">
+            <svg width="90" height="108" viewBox="0 0 54 64" xmlns="http://www.w3.org/2000/svg">
+              <!-- Heavy pillars -->
+              <rect x="0"  y="0" width="15" height="64" fill="#F0EDE8"/>
+              <rect x="39" y="0" width="15" height="64" fill="#F0EDE8"/>
+              <!-- Hairline crossbar — the deliberate tension element -->
+              <rect x="0"  y="28" width="54" height="5" fill="#00D4FF"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Dark</div>
+        </div>
+        <div>
+          <div class="mark-light">
+            <svg width="68" height="82" viewBox="0 0 54 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0"  y="0" width="15" height="64" fill="#1a1a2e"/>
+              <rect x="39" y="0" width="15" height="64" fill="#1a1a2e"/>
+              <rect x="0"  y="28" width="54" height="5" fill="#0088BB"/>
+            </svg>
+          </div>
+          <div class="swatch-label">Light</div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cell">
+      <div class="concept-meta">
+        <span class="concept-index">05 / 05</span>
+        <span class="concept-name" style="color:#F0EDE8;">MONO <span style="font-size:13px;font-weight:400;color:#444466;">w/ cyan accent</span></span>
+        <p class="concept-desc">Two heavy white pillars. One thin cyan bar. That's the entire mark. The tension between the massive pillars and the surgical crossbar creates visual power. The cyan crossbar is the only colour — it's the signal, the AI, the intelligence connecting the two sides. Used by companies that don't need to explain themselves.</p>
+      </div>
+      <div class="lockup">
+        <svg width="38" height="46" viewBox="0 0 54 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0"  y="0" width="15" height="64" fill="#F0EDE8"/>
+          <rect x="39" y="0" width="15" height="64" fill="#F0EDE8"/>
+          <rect x="0"  y="28" width="54" height="5" fill="#00D4FF"/>
+        </svg>
+        <div class="lockup-sep"></div>
+        <div class="lockup-text">
+          <span class="lk-main" style="font-family:'Inter',sans-serif;font-weight:200;font-size:18px;letter-spacing:0.32em;color:#F0EDE8;">HYPERION</span>
+          <span class="lk-sub" style="font-family:'Inter',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.06em;color:#00D4FF;">LABS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p style="text-align:center;margin-top:52px;font-size:11px;color:#22223a;letter-spacing:0.06em;">
+  Tell me the number(s) you like and I'll refine, apply it to the site, and export the PNG files.
+</p>
+
+</body>
+</html>

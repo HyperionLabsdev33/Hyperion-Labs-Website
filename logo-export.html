@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hyperion Labs — Logo Export</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0f;
+      color: #f0f0ff;
+      font-family: 'Inter', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      padding: 40px 24px;
+    }
+    h1 { font-size: 14px; color: #555577; letter-spacing: 0.1em; text-transform: uppercase; }
+    .previews {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      width: 100%;
+      max-width: 900px;
+    }
+    .preview-wrap {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #1e1e3a;
+    }
+    .preview-label {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: #555577;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #0f0f1a;
+      border-bottom: 1px solid #1e1e3a;
+    }
+    canvas { display: block; width: 100%; }
+    .buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      padding: 12px 28px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: 'Inter', Arial, sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-dark  { background: #00d4ff; color: #0a0a0f; }
+    .btn-light { background: #f0f0ff; color: #0a0a0f; }
+    .btn-mark  { background: #1e1e3a; color: #f0f0ff; border: 1px solid #2a2a4a; }
+    button:hover { opacity: 0.85; transform: translateY(-1px); }
+    .note {
+      font-size: 12px;
+      color: #444466;
+      text-align: center;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hyperion Labs — Logo Export</h1>
+
+  <div class="previews">
+    <div class="preview-wrap">
+      <div class="preview-label">Dark background (primary)</div>
+      <canvas id="canvas-dark"></canvas>
+    </div>
+    <div class="preview-wrap">
+      <div class="preview-label">Light background</div>
+      <canvas id="canvas-light"></canvas>
+    </div>
+    <div class="preview-wrap">
+      <div class="preview-label">Mark only — dark</div>
+      <canvas id="canvas-mark"></canvas>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn-dark"  onclick="download('canvas-dark',  'hyperion-labs-logo-dark.png')">↓ Download Dark PNG</button>
+    <button class="btn-light" onclick="download('canvas-light', 'hyperion-labs-logo-light.png')">↓ Download Light PNG</button>
+    <button class="btn-mark"  onclick="download('canvas-mark',  'hyperion-labs-mark.png')">↓ Download Mark PNG</button>
+  </div>
+
+  <p class="note">
+    All exports are 4× resolution (print-quality).<br/>
+    The dark version is the primary brand logo. Use the mark-only for favicons and small contexts.
+  </p>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────────
+    // Drawing helpers
+    // ─────────────────────────────────────────────────────────────────
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath()
+      if (ctx.roundRect) {
+        ctx.roundRect(x, y, w, h, r)
+      } else {
+        ctx.moveTo(x + r, y)
+        ctx.lineTo(x + w - r, y)
+        ctx.arcTo(x + w, y, x + w, y + r, r)
+        ctx.lineTo(x + w, y + h - r)
+        ctx.arcTo(x + w, y + h, x + w - r, y + h, r)
+        ctx.lineTo(x + r, y + h)
+        ctx.arcTo(x, y + h, x, y + h - r, r)
+        ctx.lineTo(x, y + r)
+        ctx.arcTo(x, y, x + r, y, r)
+      }
+      ctx.closePath()
+    }
+
+    function drawMark(ctx, ox, oy, s) {
+      // s = scale factor, ox/oy = origin offset
+
+      // Gradient for pillars
+      const pGrad = ctx.createLinearGradient(ox, oy + 11*s, ox, oy + 64*s)
+      pGrad.addColorStop(0,   '#e8e8f4')
+      pGrad.addColorStop(1,   '#b8b8cc')
+
+      // Bar gradient
+      const bGrad = ctx.createLinearGradient(ox, 0, ox + 52*s, 0)
+      bGrad.addColorStop(0,    'rgba(0,212,255,0.7)')
+      bGrad.addColorStop(0.3,  '#00d4ff')
+      bGrad.addColorStop(0.7,  '#00d4ff')
+      bGrad.addColorStop(1,    'rgba(0,212,255,0.7)')
+
+      // Left pip
+      ctx.fillStyle = '#00d4ff'
+      roundRect(ctx, ox + 2*s, oy + 2*s, 9*s, 7*s, 1.5*s)
+      ctx.fill()
+
+      // Right pip
+      roundRect(ctx, ox + 41*s, oy + 2*s, 9*s, 7*s, 1.5*s)
+      ctx.fill()
+
+      // Left pillar (chamfer top-left)
+      ctx.fillStyle = pGrad
+      ctx.beginPath()
+      ctx.moveTo(ox + 9*s, oy + 11*s)
+      ctx.lineTo(ox + 15*s, oy + 11*s)
+      ctx.lineTo(ox + 15*s, oy + 64*s)
+      ctx.lineTo(ox + 0,    oy + 64*s)
+      ctx.lineTo(ox + 0,    oy + 20*s)
+      ctx.closePath()
+      ctx.fill()
+
+      // Right pillar (chamfer top-right)
+      ctx.fillStyle = pGrad
+      ctx.beginPath()
+      ctx.moveTo(ox + 37*s, oy + 11*s)
+      ctx.lineTo(ox + 43*s, oy + 11*s)
+      ctx.lineTo(ox + 52*s, oy + 20*s)
+      ctx.lineTo(ox + 52*s, oy + 64*s)
+      ctx.lineTo(ox + 37*s, oy + 64*s)
+      ctx.closePath()
+      ctx.fill()
+
+      // Cyan crossbar
+      ctx.fillStyle = bGrad
+      ctx.fillRect(ox + 0, oy + 32*s, 52*s, 8*s)
+
+      // Panel notch details
+      ctx.fillStyle = 'rgba(10,10,15,0.35)'
+      ctx.fillRect(ox + 13*s, oy + 32*s, 2*s, 8*s)
+      ctx.fillRect(ox + 37*s, oy + 32*s, 2*s, 8*s)
+    }
+
+    function drawWordmark(ctx, ox, oy, s, textColor) {
+      // Separator rule
+      ctx.fillStyle = '#1e1e3a'
+      ctx.fillRect(ox + 63*s, oy + 9*s, 1*s, 46*s)
+
+      // HYPERION
+      ctx.fillStyle = textColor
+      ctx.font = `800 ${21*s}px Inter, "Helvetica Neue", Arial, sans-serif`
+      ctx.letterSpacing = `${3.5*s}px`
+      ctx.fillText('HYPERION', ox + 76*s, oy + 36*s)
+
+      // LABS
+      ctx.fillStyle = '#00d4ff'
+      ctx.font = `500 ${11.5*s}px Inter, "Helvetica Neue", Arial, sans-serif`
+      ctx.letterSpacing = `${9*s}px`
+      ctx.fillText('LABS', ox + 78*s, oy + 55*s)
+
+      ctx.letterSpacing = '0px'
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // Render all canvases after fonts load
+    // ─────────────────────────────────────────────────────────────────
+
+    const SCALE = 4          // 4× for print quality
+    const LOGO_W = 272
+    const LOGO_H = 64
+    const MARK_W = 52
+    const PAD_X = 40         // horizontal padding
+    const PAD_Y = 28         // vertical padding
+
+    function renderFull(canvasId, bg, textColor) {
+      const el = document.getElementById(canvasId)
+      const W = (LOGO_W + PAD_X * 2) * SCALE
+      const H = (LOGO_H + PAD_Y * 2) * SCALE
+      el.width  = W
+      el.height = H
+      el.style.maxHeight = '120px'
+      const ctx = el.getContext('2d')
+
+      // Background
+      if (bg === 'transparent') {
+        ctx.clearRect(0, 0, W, H)
+      } else {
+        ctx.fillStyle = bg
+        ctx.fillRect(0, 0, W, H)
+      }
+
+      const ox = PAD_X * SCALE
+      const oy = PAD_Y * SCALE
+      drawMark(ctx, ox, oy, SCALE)
+      drawWordmark(ctx, ox, oy, SCALE, textColor)
+    }
+
+    function renderMark(canvasId, bg) {
+      const el = document.getElementById(canvasId)
+      const W = (MARK_W + PAD_X * 2) * SCALE
+      const H = (LOGO_H + PAD_Y * 2) * SCALE
+      el.width  = W
+      el.height = H
+      el.style.maxHeight = '120px'
+      const ctx = el.getContext('2d')
+
+      if (bg === 'transparent') {
+        ctx.clearRect(0, 0, W, H)
+      } else {
+        ctx.fillStyle = bg
+        ctx.fillRect(0, 0, W, H)
+      }
+
+      drawMark(ctx, PAD_X * SCALE, PAD_Y * SCALE, SCALE)
+    }
+
+    document.fonts.ready.then(() => {
+      renderFull('canvas-dark',  '#0a0a0f',  '#f0f0ff')
+      renderFull('canvas-light', '#ffffff',  '#0d0d14')
+      renderMark('canvas-mark',  '#0a0a0f')
+    })
+
+    // ─────────────────────────────────────────────────────────────────
+    // Download
+    // ─────────────────────────────────────────────────────────────────
+
+    function download(canvasId, filename) {
+      const el = document.getElementById(canvasId)
+      const link = document.createElement('a')
+      link.download = filename
+      link.href = el.toDataURL('image/png')
+      link.click()
+    }
+  </script>
+</body>
+</html>
