@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react'
 import SectionHeader from '../ui/SectionHeader'
 import GlowCard from '../ui/GlowCard'
@@ -13,6 +14,12 @@ const benefits = [
 ]
 
 function CalendlyWidget() {
+  useEffect(() => {
+    if (window.Calendly) {
+      window.Calendly.initInlineWidgets()
+    }
+  }, [])
+
   return (
     <div
       className="calendly-inline-widget"
